@@ -4,6 +4,7 @@
 - MacBook Air(2015)
 - Intel i5 1,6 GHz Dual-Core prossu
 - 8 GB RAM
+- macOS Monterey v.12.6.2
 
 ## x) 
 
