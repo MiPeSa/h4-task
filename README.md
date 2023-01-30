@@ -86,8 +86,8 @@ Lokimerkinnässä on tehty ip osoitteesta ``127.0.0.1``, käyttäjä ``-``, aika
 
 ## Lähteet
 
-Toybox: All-in-one Linux comman line, Luettavissa: https://news.ycombinator.com/item?id=28627433
-Toybox Github: https://github.com/landley/toybox
-Multicall binaries, Diego Elio Pettenò 2004 Luettavissa: https://flameeyes.blog/2009/10/19/multicall-binaries/
-Apache error log explained, luettavissa: https://stackify.com/apache-error-log-explained/
-Understanding the Apache Access Log: View, Locate and Analyze, luettavissa: https://www.sumologic.com/blog/apache-access-log/
+- Toybox: All-in-one Linux comman line, Luettavissa: https://news.ycombinator.com/item?id=28627433
+- Toybox Github: https://github.com/landley/toybox
+- Multicall binaries, Diego Elio Pettenò 2004 Luettavissa: https://flameeyes.blog/2009/10/19/multicall-binaries/
+- Apache error log explained, luettavissa: https://stackify.com/apache-error-log-explained/
+- Understanding the Apache Access Log: View, Locate and Analyze, luettavissa: https://www.sumologic.com/blog/apache-access-log/
