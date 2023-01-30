@@ -1,20 +1,13 @@
 # h4 Tehtävä
 
-x) Lue ja tiivistä. Tiivistelmäksi riittää muutama ranskalainen viiva per artikkeli. (Tässä alakohdassa ei tarvitse tehdä testejä tietokoneella)
+## Kone 
 
-YCombinator Hacker News, vapaavalintainen artikkeli kommentteineen Linuxin komentokehotteesta
-Voit valita minkä vain joka ei ole suosituimman top 3 joukossa, niin pääset todennäköisesti lukemaan eri artikkelin kuin luokkakaverit.
-Kommentit aukeavat siitä pienestä "420 comments" linkistä.
-Riittää, kun silmäilet artikkelin ja kommentit soveltuvin osin, osa voi olla kirjan mittaisia etkä ehdi tässä lukea niitä kokonaan. Samoin tiivistelmäksi riittää muutama bulletti, poimi keskeisimmät asiat.
-a) Tukki. Analysoi yksi esimerkkirivi kustakin näistä lokeista
-
-/var/log/syslog - yleisloki, tänne kaikki joilla ei ole omaa lokia
-/var/log/auth.log - kirjatumiset, sudo:n käyttö
-/var/log/apache2/access.log - onnistunut surffailu 2xx, 3xx; käyttäjän virheet 4xx client error
-/var/log/apache2/error.log - apachen omat virheet, 5xx server error
-b) Aiheuta. Aiheuta lokiin kaksi eri tapahtumaa: yksi esimerkki onnistuneesta ja yksi esimerkki epäonnistuneesta tai kielletystä toimenpiteestä. Analysoi rivit yksityiskohtaisesti.
+M
 
 ## x) 
+MacBook Air(2015)
+Intel i5 1,6 GHz Dual-Core prossu
+8 GB RAM
 
 ### Toybox: All-in-one Linux command line
 
@@ -22,15 +15,15 @@ b) Aiheuta. Aiheuta lokiin kaksi eri tapahtumaa: yksi esimerkki onnistuneesta ja
 - Ohjelma on vapaan lisenssin ohjelma.(BSD Zero Clause License, joka sallii ohjelman vapaan käytön mihin tahansa käyttötarkoitukseen.)
 - Ohjelmaa on kuvattu seuraavasti Githubissa: 
     
-        "The toybox build produces a multicall binary, a "swiss-army-knife" program
-        that acts differently depending on the name it was called by (cp, mv, cat...).
-        Installing toybox adds symlinks for each command name to the $PATH."
+      "The toybox build produces a multicall binary, a "swiss-army-knife" program
+      that acts differently depending on the name it was called by (cp, mv, cat...).
+      Installing toybox adds symlinks for each command name to the $PATH."
  
 Tutustuin vielä hieman tarkemmin multicall binary menetelmään, jota Toybox käyttää. 
  
 "Multicall binary" on siis ajotiedosto, joka suorittaa koodia sen kutsumiseen käytetyn nimen mukaan. Tämä yleensä tuo paketin asentamaan yhden ajotiedoston ja sitten sarjan symbolisia linkkejä eri vaihtoehtoisilla nimillä, jotka johtavat toiseen ajotiedostoon.
 
-- Githubissa esittelyssä myösk kerrotaan ohjelman erityisestä "toybox" komennosta, joka käsittelee ensimmäistä annettua argumenttia suoritettavana komentona. Ilman argumentteja ohjelma luettelee käytettävissä olevat komennot.
+- Githubissa esittelyssä myös kerrotaan ohjelman erityisestä "toybox" komennosta, joka käsittelee ensimmäistä annettua argumenttia suoritettavana komentona. Ilman argumentteja ohjelma luettelee käytettävissä olevat komennot.
 
 - Hacker News artikkelin kommenteissa ohjelma saa osakseen varsin paljon kritiikkiä. Ohjelma sai kritiikkiä erityisesti dokumentoinnin puutteesta. Käyttäjät olisivat selkeästi kaivanneet tarkempaan dokumentointia ohjelmasta sekä sen tekemisestä pelkän koodin sijaan.
 - Ohjelmaa myös verrattiin ilmeisesti hyvin samankaltaiseen ohjelmaan nimeltä Busybox.
@@ -87,7 +80,7 @@ Onnistunut lokimerkintä selailusta Apache2 palvelimella. Merkinnässä ``200`` 
 
 ![Add file: apache2 error](apache-palvelin-error.png)
 
-Lokimerkinnässä on tehty ip osoitteesta ``127.0.0.1``, käyttäjä ``-``, aikaleimalla ``[30/Jan/2023:15:16:35 +0200]`` GET pyynnön /terve päätteeseen "HTTP/1.1":lle. Lokimerkinnässä kuitenkin näkyy, että palvelin vastasi virheellä ``404``, joka viittaa palvelimen virheeseen. Lokimerkinnän loppuosa kertoo pyynnön tehneen käyttäjän verkkoselaimen tietoja.
+Lokimerkinnässä on tehty ip osoitteesta ``127.0.0.1``, käyttäjä ``-``, aikaleimalla ``[30/Jan/2023:15:16:35 +0200]`` GET pyynnön /terve päätteeseen "HTTP/1.1":lle. Lokimerkinnässä kuitenkin näkyy, että palvelin vastasi virheellä ``404`` ja ``488``. ``4...``alkuinen numerosarja viittaa palvelimen virheeseen. Lokimerkinnän loppuosa kertoo pyynnön tehneen käyttäjän verkkoselaimen tietoja.
 
 ## Lähteet
 
