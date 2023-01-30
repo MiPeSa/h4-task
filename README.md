@@ -1,13 +1,11 @@
 # h4 Tehtävä
 
 ## Kone 
-
-M
+- MacBook Air(2015)
+- Intel i5 1,6 GHz Dual-Core prossu
+- 8 GB RAM
 
 ## x) 
-MacBook Air(2015)
-Intel i5 1,6 GHz Dual-Core prossu
-8 GB RAM
 
 ### Toybox: All-in-one Linux command line
 
@@ -35,31 +33,34 @@ Tutustuin vielä hieman tarkemmin multicall binary menetelmään, jota Toybox k�
 ### /var/log/syslog - yleisloki, tänne kaikki joilla ei ole omaa lokia
 
 Syötin komentokehotteeseen ``$ sudo tail -f -n 10 /var/log/syslog``, jotta sain 10 viimeisintä tapahtumaa lokista.
-Valitsin riveistä seuraavan:
+Valitsin riveistä seuraavan.
+
 ![Add file: syslog](syslog-rivi.png)
 
 - Rivillä näkyy aikaleima, joka pitää paikkansa, virtuaalikoneeni tunniste eli tässä tapauksessa ``tyyli``. 
-- Rivi kertoo viestillä tapahtuman "Started Virtual filesystem metadata service." Tämä kertoo, että virtuaalisen tiedostojärjestelmän metadata toiminto/palvelu on käynnistetty.
+- Rivi kertoo viestillä tapahtuman ``Started Virtual filesystem metadata service.`` Tämä kertoo, että virtuaalisen tiedostojärjestelmän metadata toiminto/palvelu on käynnistetty.
 Tunnisteen ``tyyli`` jälkeen rivillä on ``systemd[1178]`` itselleni tämä ei rehellisesti sano juuri mitään, joten päätin etsiä tietoa internetistä. 
-- Olettaisin, että tässä tapauksessa systemd tarjoaa sen komponentin kirjaaman viestin. Voisiko numero ([1178]) olla tunniste komponentin tarjoamalle viestille, joka tulostetaan systemd:n jälkeen komentokehotteeseen.  
+- Olettaisin, että tässä tapauksessa systemd tarjoaa sen komponentin kirjaaman viestin. Voisiko numero ``[1178]`` olla tunniste komponentin tarjoamalle viestille, joka tulostetaan systemd:n jälkeen komentokehotteeseen.  
 
 ### /var/log/auth.log - kirjatumiset, sudo:n käyttö
+
 ![Add file: Auth.log](auth.log-rivi.png)
 
-Lokiin on kirjautunut sudon käyttö, kun avasin /var/log/auth.log. Aikaleima pitää paikkansa. Aikaleiman jälkeen on virtuaalikoneeni tunniste "tyyli". ``sudo: miikkas`` kertoo, että käyttäjäni miikkas on käyttänyt sudo komentoa. ``PWD=/home/miikkas`` kertoo hakemiston. ``USER=root``kertoo, että käyttäjä on pääkäyttäjä eli root. Sen jälkeen rivillä on ``COMMAND=/usr/bin/tail -f -n 10 /var/log/auth.log``. Tämä kertoo komennon, joka sudolla on suoritettu.
+Lokiin on kirjautunut sudon käyttö, kun avasin ``/var/log/auth.log.`` Aikaleima pitää paikkansa. Aikaleiman jälkeen on virtuaalikoneeni tunniste ``tyyli``. ``sudo: miikkas`` kertoo, että käyttäjäni ``miikkas`` on käyttänyt sudo komentoa. ``PWD=/home/miikkas`` kertoo hakemiston. ``USER=root``kertoo, että käyttäjä on pääkäyttäjä eli root. Sen jälkeen rivillä on ``COMMAND=/usr/bin/tail -f -n 10 /var/log/auth.log``. Tämä kertoo komennon, joka sudolla on suoritettu.
 
-``TTY=pts/0`` Ei ole kovin tuttu osa. Selvitin, että ilmeisesti TTY on natiivi päätelaite, jolla on suora pääsy laitteeseen ja pts/0 eli Pseudo-terminal slave olisi vastaava orjatiedosto. Tämä osa jäi kuitenkin silti edelleen jokseenkin epäselväksi.
+``TTY=pts/0`` Ei ole kovin tuttu osa. Selvitin, että ilmeisesti ``TTY`` on natiivi päätelaite, jolla on suora pääsy laitteeseen ja ``pts/0`` eli Pseudo-terminal slave olisi vastaava orjatiedosto. Tämä osa jäi kuitenkin silti edelleen jokseenkin epäselväksi.
 
-### /var/log/apache2/access.log - onnistunut surffailu 2xx, 3xx; käyttäjän virheet 4xx client error
+### /var/log/apache2/access.log 
+
 ![Add file: apache2](apache-access.png)
 
-Rivi kertoo, että apache2 localhost palvelimelle on tehty "GET" pyyntö /HTTP/1.1 osoitteeseen. Rivillä näkyy mistä pyyntö on tehty(ip osoite ``127.0.0.1``), aikaleima joka sisältää aikavyöhykkeen, joka pitää paikkansa. Tiedän, että aikaleima on oikein, sillä olen itse tehnyt tämän pyynnön. Numero "200" kertoo onnistuneesta surffailusta palvelimella ja "3379" kertoo käyttäjälle tarjotun paketin koon. 
+Rivi kertoo, että apache2 localhost palvelimelle on tehty ``GET`` pyyntö ``/HTTP/1.1`` osoitteeseen. Rivillä näkyy mistä pyyntö on tehty(ip osoite ``127.0.0.1``), aikaleima joka sisältää aikavyöhykkeen, joka pitää paikkansa. Tiedän, että aikaleima on oikein, sillä olen itse tehnyt tämän pyynnön. Numero ``200`` kertoo onnistuneesta surffailusta palvelimella ja ``3379`` kertoo käyttäjälle tarjotun paketin koon. 
 
-Rivin loppuosa "Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0" kertoo informaatiota selaimesta, jota pyynnön tehnyt käyttäjä käyttää palvelimelle pääsemiseen.
+Rivin loppuosa ``"Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"`` kertoo informaatiota selaimesta, jota pyynnön tehnyt käyttäjä käyttää palvelimelle pääsemiseen.
 
-Mielestäni riviltä jäi puuttumaan ip osoitteen jälkeen käyttäjän tunniste. ``127.0.0.1 - - [...`` Tunnisteen tilalla on pelkkä "-". En tiedä syytä tälle. Myös paketin koon ja rivin loppuosan välissä on ``"-"``, jossa ilmeisesti pitäisi olla HTTP viittaus, joka edustaa osotetta, josta pyyntö on peräisin. Esim "http://localhost/".
+Mielestäni riviltä jäi puuttumaan ip osoitteen jälkeen käyttäjän tunniste. ``127.0.0.1 - - [...`` Tunnisteen tilalla on pelkkä ``"-"``. En tiedä syytä tälle. Myös paketin koon ja rivin loppuosan välissä on ``"-"``, jossa ilmeisesti pitäisi olla HTTP viittaus, joka edustaa osotetta, josta pyyntö on peräisin. Esim ``"http://localhost/"``.
 
-### /var/log/apache2/error.log - apachen omat virheet, 5xx server error
+### /var/log/apache2/error.log
 
 ![Add file: apache error](apache-error.png)
 
@@ -80,7 +81,7 @@ Onnistunut lokimerkintä selailusta Apache2 palvelimella. Merkinnässä ``200`` 
 
 ![Add file: apache2 error](apache-palvelin-error.png)
 
-Lokimerkinnässä on tehty ip osoitteesta ``127.0.0.1``, käyttäjä ``-``, aikaleimalla ``[30/Jan/2023:15:16:35 +0200]`` GET pyynnön /terve päätteeseen "HTTP/1.1":lle. Lokimerkinnässä kuitenkin näkyy, että palvelin vastasi virheellä ``404`` ja ``488``. ``4...``alkuinen numerosarja viittaa palvelimen virheeseen. Lokimerkinnän loppuosa kertoo pyynnön tehneen käyttäjän verkkoselaimen tietoja.
+Lokimerkinnässä on tehty ip osoitteesta ``127.0.0.1``, käyttäjä ``-``, aikaleimalla ``[30/Jan/2023:15:16:35 +0200]`` ``GET`` pyynnön ``/terve`` päätteeseen ``HTTP/1.1``:lle. Lokimerkinnässä kuitenkin näkyy, että palvelin vastasi virheellä ``404`` ja ``488``. ``4...``alkuinen numerosarja viittaa palvelimen virheeseen. Lokimerkinnän loppuosa kertoo pyynnön tehneen käyttäjän verkkoselaimen tietoja.
 
 ## Lähteet
 
