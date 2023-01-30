@@ -31,7 +31,7 @@ Tutustuin vielä hieman tarkemmin multicall binary menetelmään, jota Toybox k�
 
 ## a) Tukki. Analysoi yksi esimerkkirivi kustakin näistä lokeista
 
-### /var/log/syslog - yleisloki, tänne kaikki joilla ei ole omaa lokia
+### /var/log/syslog 
 
 Syötin komentokehotteeseen ``$ sudo tail -f -n 10 /var/log/syslog``, jotta sain 10 viimeisintä tapahtumaa lokista.
 Valitsin riveistä seuraavan.
@@ -43,7 +43,7 @@ Valitsin riveistä seuraavan.
 Tunnisteen ``tyyli`` jälkeen rivillä on ``systemd[1178]`` itselleni tämä ei rehellisesti sano juuri mitään, joten päätin etsiä tietoa internetistä. 
 - Olettaisin, että tässä tapauksessa systemd tarjoaa sen komponentin kirjaaman viestin. Voisiko numero ``[1178]`` olla tunniste komponentin tarjoamalle viestille, joka tulostetaan systemd:n jälkeen komentokehotteeseen.  
 
-### /var/log/auth.log - kirjatumiset, sudo:n käyttö
+### /var/log/auth.log 
 
 ![Add file: Auth.log](auth.log-rivi.png)
 
