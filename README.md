@@ -82,7 +82,7 @@ Onnistunut lokimerkintä selailusta Apache2 palvelimella. Merkinnässä ``200`` 
 
 ![Add file: apache2 error](apache-palvelin-error.png)
 
-Lokimerkinnässä on tehty ip osoitteesta ``127.0.0.1``, käyttäjä ``-``, aikaleimalla ``[30/Jan/2023:15:16:35 +0200]`` ``GET`` pyynnön ``/terve`` päätteeseen ``HTTP/1.1``:lle. Lokimerkinnässä kuitenkin näkyy, että palvelin vastasi virheellä ``404`` ja ``488``. ``4...``alkuinen numerosarja viittaa palvelimen virheeseen. Lokimerkinnän loppuosa kertoo pyynnön tehneen käyttäjän verkkoselaimen tietoja.
+Lokimerkinnässä on tehty ip osoitteesta ``127.0.0.1``, käyttäjä ``-``, aikaleimalla ``[30/Jan/2023:15:16:35 +0200]`` ``GET`` pyynnön ``/terve`` päätteeseen ``HTTP/1.1``:lle. Lokimerkinnässä kuitenkin näkyy, että palvelin vastasi virheellä ``404`` ja ``488``. ``4...``alkuinen numerosarja viittaa käyttäjän virheeseen. Lokimerkinnän loppuosa kertoo pyynnön tehneen käyttäjän verkkoselaimen tietoja.
 
 ## Lähteet
 
